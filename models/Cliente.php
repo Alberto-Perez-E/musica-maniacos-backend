@@ -56,5 +56,27 @@
             return FALSE;
         }//end insert
 
+        public static function update($id_cliente, $usuario, $correo, $contrasena, $nacimiento, $foto) {
+            $db = new Connection();
+            $query = "UPDATE clientes SET
+            usuario='".$usuario."', correo='".$correo."', contrasena='".$contrasena."', nacimiento='".$nacimiento."', foto='".$foto."'
+            WHERE id=$id_cliente";
+            $db->query($query);
+            if($db->affected_rows) {
+                return TRUE;
+            }//end if
+            return FALSE;
+        }//end update
+
+        public static function delete($id_cliente) {
+            $db = new Connection();
+            $query = "DELETE FROM clientes WHERE id=$id_cliente";
+            $db->query($query);
+            if($db->affected_rows) {
+                return TRUE;
+            }//end if
+            return FALSE;
+        }//end update
+        
     }//end class Client 
  
